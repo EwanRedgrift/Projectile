@@ -32,6 +32,7 @@
             this.instructionButton = new System.Windows.Forms.Button();
             this.leaveButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // playButton
@@ -73,11 +74,21 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "PROJECTILE";
             // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(355, 103);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(284, 85);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "By Ewan and Garrett";
+            // 
             // MenuScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.IndianRed;
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.leaveButton);
             this.Controls.Add(this.instructionButton);
@@ -94,5 +105,6 @@
         private System.Windows.Forms.Button instructionButton;
         private System.Windows.Forms.Button leaveButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

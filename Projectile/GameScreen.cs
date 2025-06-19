@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//By Garrett and Ewan
+
+
 namespace Projectile
 {
     public partial class GameScreen : UserControl
@@ -59,17 +62,15 @@ namespace Projectile
             projectile.yCoords = player1.yCoords + player1.height / 2 - 10;
 
 
-            rock = new Obstacle(this.Width / 2, this.Height - 60, 40, 60);
+            rock = new Obstacle(this.Width / 2, this.Height - 55, 40, 60);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            // If the player is sliding, animate that first
             if (player1.isSliding)
             {
                 player1.xCoords += player1.slideVelocity;
 
-                // Stop sliding after some distance
                 if (Math.Abs(player1.slideVelocity) > 0)
                 {
                     player1.slideVelocity = (int)(player1.slideVelocity * 0.8); // slow down
@@ -98,7 +99,6 @@ namespace Projectile
                 }
             }
 
-            // Fly the projectile
             bool landed = projectile.fly();
 
             Player opponent;
@@ -111,7 +111,6 @@ namespace Projectile
                 opponent = player1;
             }
 
-            // Check for collision
             if (projectile.isLaunched && projectile.CheckCollision(opponent))
             {
                 int damage = projectile.GetVelocityMagnitude();
@@ -193,13 +192,12 @@ namespace Projectile
                 Point mousePos = this.PointToClient(Cursor.Position);
                 e.Graphics.FillRectangle(blackBrush, mousePos.X - 10, mousePos.Y - 10, 20, 20);
 
-                // Calculate drag vector
                 int dx = dragStart.X - mousePos.X;
                 int dy = dragStart.Y - mousePos.Y;
 
                 double distance = Math.Sqrt(dx * dx + dy * dy);
                 double angle = -(Math.Atan2(dy, dx)); // In radians
-                int maxPower = 50;
+                int maxPower = 35;
                 double power = Math.Min(distance, maxPower);
 
                 double xVel = Math.Cos(angle) * power;
@@ -219,7 +217,6 @@ namespace Projectile
             }
             else
             {
-                // Draw projectile normally
                 e.Graphics.FillRectangle(blackBrush, projectile.xCoords, projectile.yCoords, 20, 20);
             }
         }
@@ -247,7 +244,7 @@ namespace Projectile
                 double distance = Math.Sqrt(dx * dx + dy * dy);
                 double angle = -(Math.Atan2(dy, dx) * 180 / Math.PI);
 
-                int maxPower = 50;
+                int maxPower = 35;
                 int power = (int)Math.Min(distance, maxPower);
 
                 switch (turn)
